@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: ListView(
               children: [
-                const SizedBox(height: 60),
+                const SizedBox(height: 40),
                 _buildInputField('Username'),
                 _buildInputField('Email'),
                 _buildInputField('Password', isPassword: true),
@@ -36,6 +36,9 @@ class RegisterScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: mainGreen,
                     minimumSize: const Size.fromHeight(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    )
                   ),
                   onPressed: () {},
                   child: const Text('Register'),

@@ -21,8 +21,11 @@ class HomeScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => Navigator.pushNamed(context, '/login'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color(0xFF06923E),
                     minimumSize: Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    )
                   ),
                   child: Text('Login'),
                 ),
@@ -31,16 +34,19 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () => Navigator.pushNamed(context, '/register'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
-                    foregroundColor: Colors.green,
-                    side: const BorderSide(color: Colors.green),
+                    foregroundColor: const Color(0xFF06923E),
+                    side: const BorderSide(color: Color(0xFF06923E)),
                     minimumSize: Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    )
                   ),
                   child: Text('Register'),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 60),
         ],
       ),
     );
