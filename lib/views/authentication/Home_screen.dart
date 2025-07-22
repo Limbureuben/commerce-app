@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
           Center(
             child: CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage('assets/images/logo.png'),
+              backgroundImage: AssetImage('assets/images/icon1.png'),
             ),
           ),
           const Spacer(),

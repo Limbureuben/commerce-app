@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/views/authentication/Home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -145,7 +146,10 @@ class _HomepageState extends State<Homepage> {
                   shadowColor: Colors.greenAccent,
                 ),
                 onPressed: () {
-                  // TODO: Navigate to main app screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder:(context) => HomeScreen()),
+                    );
                 },
                 child: const Text(
                   'START SHOPPING',
