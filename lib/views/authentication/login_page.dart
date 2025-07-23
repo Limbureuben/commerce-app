@@ -98,8 +98,8 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                       ),
                       const SizedBox(height: 30),
 
-                      _buildInputField('Enter your email'),
-                      _buildInputField('Enter your password', isPassword: true),
+                      _buildInputField(context, 'Enter your email'),
+                      _buildInputField(context, 'Enter your password', isPassword: true),
 
                       Align(
                         alignment: Alignment.centerRight,
@@ -132,9 +132,9 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildSocialIcon(FontAwesomeIcons.facebookF),
-                          _buildSocialIcon(FontAwesomeIcons.google),
-                          _buildSocialIcon(FontAwesomeIcons.apple),
+                          _buildSocialIcon(context, FontAwesomeIcons.facebookF),
+                          _buildSocialIcon(context, FontAwesomeIcons.google),
+                          _buildSocialIcon(context, FontAwesomeIcons.apple),
                         ],
                       ),
                       const SizedBox(height: 40),
@@ -166,43 +166,56 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     );
   }
 
-  Widget _buildInputField(String hint, {bool isPassword = false}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: TextFormField(
-        obscureText: isPassword,
-        decoration: InputDecoration(
-          hintText: hint,
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none, // Remove border
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none, // Remove border
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none, // Remove border even on focus
-          ),
+Widget _buildInputField(BuildContext context, String hint, {bool isPassword = false}) {
+  final theme = Theme.of(context);
+  final isDark = theme.brightness == Brightness.dark;
+
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 20),
+    child: TextFormField(
+      obscureText: isPassword,
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(
+          color: isDark ? Colors.grey.shade300 : Colors.grey.shade600,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildSocialIcon(IconData icon) {
-    return Container(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Icon(icon, size: 20),
-    );
-  }
+Widget _buildSocialIcon(BuildContext context, IconData icon) {
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+
+  return Container(
+    height: 50,
+    width: 50,
+    decoration: BoxDecoration(
+      color: isDark ? Colors.grey.shade900 : Colors.white,
+      border: Border.all(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Icon(
+      icon,
+      size: 20,
+      color: isDark ? Colors.white : Colors.black87,
+    ),
+  );
+}
+
 }
