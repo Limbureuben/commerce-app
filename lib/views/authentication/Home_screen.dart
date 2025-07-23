@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               scale: _imageAnimation,
               child: Image.asset(
                 'assets/images/illution.png',
-                height: 280,
+                height: 340,
                 fit: BoxFit.contain,
               ),
             ),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Column(
                 children: const [
                   Text(
-                    'Welcome to CleanSpace!',
+                    'Shop Smarter, Live Better',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Organize, book and manage spaces effortlessly.',
+                    'Discover quality products at your fingertips, delivered to your door.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
