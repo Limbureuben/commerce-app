@@ -166,11 +166,11 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey.shade300),
+            borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey.shade300),
+            borderSide: BorderSide.none,
           ),
         ),
       ),
