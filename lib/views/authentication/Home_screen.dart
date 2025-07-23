@@ -1,53 +1,139 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late AnimationController _imageController;
+  late AnimationController _textController;
+  late Animation<double> _imageAnimation;
+  late Animation<double> _textFade;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Animation for image
+    _imageController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1000),
+    );
+    _imageAnimation = CurvedAnimation(
+      parent: _imageController,
+      curve: Curves.easeOut,
+    );
+
+    // Animation for text & buttons
+    _textController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1200),
+    );
+    _textFade = CurvedAnimation(
+      parent: _textController,
+      curve: Curves.easeIn,
+    );
+
+    _imageController.forward();
+    _textController.forward();
+  }
+
+  @override
+  void dispose() {
+    _imageController.dispose();
+    _textController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 100),
-          Center(
-            child: CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage('assets/images/icon1.png'),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+
+            // Animated Illustration
+            ScaleTransition(
+              scale: _imageAnimation,
+              child: Image.asset(
+                'assets/images/illution.png',
+                height: 280,
+                fit: BoxFit.contain,
+              ),
             ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/login'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF06923E),
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                    )
+
+            const SizedBox(height: 20),
+
+            // Animated Heading & Subtext
+            FadeTransition(
+              opacity: _textFade,
+              child: Column(
+                children: const [
+                  Text(
+                    'Welcome to CleanSpace!',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF06923E),
+                    ),
                   ),
-                  child: Text('Login'),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/register'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF06923E),
-                    side: const BorderSide(color: Color(0xFF06923E)),
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                    )
+                  SizedBox(height: 10),
+                  Text(
+                    'Organize, book and manage spaces effortlessly.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  child: Text('Register'),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 60),
-        ],
+
+            const Spacer(),
+
+            // Buttons with animation
+            FadeTransition(
+              opacity: _textFade,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 40),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => Navigator.pushNamed(context, '/login'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF06923E),
+                        minimumSize: Size(double.infinity, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text('Login'),
+                    ),
+                    const SizedBox(height: 15),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pushNamed(context, '/register'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: const Color(0xFF06923E),
+                        side: const BorderSide(color: Color(0xFF06923E)),
+                        minimumSize: Size(double.infinity, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text('Register'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'views/landing/IntroScreen.dart';
 import 'views/authentication/Home_screen.dart';
 import 'views/authentication/login_page.dart';
 import 'views/authentication/register_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
