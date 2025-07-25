@@ -6,7 +6,7 @@ class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);
 
   void _onIntroEnd(BuildContext context) {
-    Navigator.of(context).pushReplacementNamed('/home');
+    Navigator.of(context).pushReplacementNamed('/homepage');
   }
 
   PageViewModel buildPage({
