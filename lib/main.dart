@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/views/authentication/Home_screen.dart';
 import 'package:ecommerce_app/views/authentication/login_page.dart';
 import 'package:ecommerce_app/views/authentication/register_page.dart';
+import 'package:ecommerce_app/views/user/Home_product.dart';
 import 'package:flutter/material.dart';
 import 'themes/themes.dart';
 import 'views/landing/Homepage.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Homepage(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
-        '/homepage': (context) => HomeScreen()
+        '/homepage': (context) => HomeScreen(),
+        '/products': (context) => const HomeProduct()
       },
     );
       }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import 'product_card.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeProduct extends StatelessWidget {
+  const HomeProduct({Key? key}) : super(key: key);
 
   final List<Product> products = const [
     Product(
