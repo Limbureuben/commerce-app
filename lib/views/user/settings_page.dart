@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
           Container(
             height: 200,
             decoration: const BoxDecoration(
-              color: Colors.blueAccent,
+              color: Color(0xFF06923E),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40),
                 bottomRight: Radius.circular(40),
@@ -108,7 +108,7 @@ class SettingsPage extends StatelessWidget {
                               icon: const Icon(Icons.logout),
                               label: const Text('Logout'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.redAccent,
+                                backgroundColor: const Color(0xFF06923E),
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 14),
                                 shape: RoundedRectangleBorder(
