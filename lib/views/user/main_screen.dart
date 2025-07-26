@@ -18,13 +18,13 @@ class _MainScreenState extends State<MainScreen> {
     Product(
       name: 'Hoodie Yellow',
       price: 69,
-      image: 'https://via.placeholder.com/200',
+      image: 'assets/images/bed2.jpeg',
       description: 'Cozy yellow hoodie.',
     ),
     Product(
       name: 'iPhone 12',
       price: 765,
-      image: 'https://via.placeholder.com/200',
+      image: 'assets/images/bed5.jpeg',
       description: 'Apple iPhone 12.',
     ),
     // Add more products here if needed
