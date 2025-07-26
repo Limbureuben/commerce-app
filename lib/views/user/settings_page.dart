@@ -21,8 +21,8 @@ class SettingsPage extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xFF06923E),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-                bottomRight: Radius.circular(40),
+                topLeft: Radius.circular(40),
+                topRight: Radius.circular(40),
               ),
             ),
           ),
@@ -97,7 +97,6 @@ class SettingsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const Divider(),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 16, horizontal: 10),
