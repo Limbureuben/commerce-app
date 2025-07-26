@@ -1,8 +1,8 @@
+import 'package:ecommerce_app/views/user/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import 'home_page.dart';
 import 'settings_page.dart';
-import 'profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
     _pages = [
       HomePage(products: products),
       const SettingsPage(),
-      const ProfilePage(),
+      const ProfileScreen(),
     ];
   }
 
@@ -51,9 +51,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Online Shop'),
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
