@@ -2,6 +2,7 @@ import 'dart:convert';
 import '../api/auth_api.dart';
 
 class AuthService {
+
   Future<String?> register({
     required String username,
     required String email,
@@ -30,4 +31,31 @@ class AuthService {
       }
     }
   }
+
+  Future<String?> login({
+    required String username,
+    required String password
+  }) async {
+    final credentials = {
+      'username': username,
+      'password': password,
+    };
+
+    final response = await AuthApi.loginUser(credentials);
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final token = data['token'];
+      return "Login successfuly";
+    } else {
+      try {
+        final data = jsonDecode(response.body);
+        return data['message'] ?? 'Login failed';
+      } catch (e) {
+        return 'Login failed';
+      }
+    }
+  }
+
+
 }
