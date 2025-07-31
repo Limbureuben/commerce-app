@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../api/auth_api.dart';
 
 class AuthService {
@@ -32,6 +33,10 @@ class AuthService {
     }
   }
 
+
+
+  
+
   Future<String?> login({
     required String username,
     required String password
@@ -46,7 +51,13 @@ class AuthService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final token = data['token'];
-      return "Login successfuly";
+      if (token != null) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('auth_token', token);
+        return "Login Successful";
+      } else {
+        return "Token not found in response";
+      }
     } else {
       try {
         final data = jsonDecode(response.body);

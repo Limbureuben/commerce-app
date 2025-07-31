@@ -248,6 +248,8 @@ import 'package:quickalert/quickalert.dart';
 import '../../services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -323,7 +325,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
 
     setState(() => _loading = false);
 
-    if (message == "Login successful") {
+    if (message == "Login Successful") {
       return QuickAlert.show(
         context: context,
         type: QuickAlertType.success,
@@ -335,7 +337,6 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
       });
     } else {
       setState(() => _error = message);
-
       return QuickAlert.show(
         context: context,
         type: QuickAlertType.error,
@@ -374,8 +375,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                         alignment: Alignment.centerLeft,
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back),
-                          onPressed: () =>
-                              Navigator.pushReplacementNamed(context, '/homepage'),
+                          onPressed: () => Navigator.pushReplacementNamed(context, '/homepage'),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -392,9 +392,17 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                         key: _formKey,
                         child: Column(
                           children: [
-                            _buildInputField(context, 'Enter your email', controller: _usernameController),
-                            _buildInputField(context, 'Enter your password',
-                                isPassword: true, controller: _passwordController),
+                            _buildInputField(
+                              context,
+                              'Enter your username',
+                              controller: _usernameController,
+                            ),
+                            _buildInputField(
+                              context,
+                              'Enter your password',
+                              controller: _passwordController,
+                              isPassword: true,
+                            ),
                             Align(
                               alignment: Alignment.centerRight,
                               child: TextButton(
@@ -467,7 +475,6 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
         obscureText: isPassword,
         validator: (value) {
           if (value == null || value.isEmpty) return 'Required';
-          if (hint.toLowerCase().contains('email') && !value.contains('@')) return 'Invalid email';
           return null;
         },
         decoration: InputDecoration(
@@ -506,6 +513,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     );
   }
 }
+
 
 
 
