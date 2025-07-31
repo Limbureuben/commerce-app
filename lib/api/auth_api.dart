@@ -15,6 +15,7 @@ class AuthApi {
     );
   }
 
+
   static Future<http.Response> loginUser(Map<String, dynamic> credentials) async {
     final url = Uri.parse('$baseUrl/login');
 

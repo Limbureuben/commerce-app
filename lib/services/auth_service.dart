@@ -9,7 +9,7 @@ class AuthService {
     required String email,
     required String password,
     required String confirmPassword,
-    String role = 'user', // optional with default value
+    String role = 'user',
   }) async {
     final userData = {
       'username': username,
@@ -26,6 +26,9 @@ class AuthService {
     } else {
       try {
         final data = jsonDecode(response.body);
+        final token = data['token'];
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('auth_token', token);
         return data['message'] ?? 'Registration failed';
       } catch (e) {
         return 'Registration failed';
@@ -35,7 +38,7 @@ class AuthService {
 
 
 
-  
+
 
   Future<String?> login({
     required String username,
@@ -66,6 +69,17 @@ class AuthService {
         return 'Login failed';
       }
     }
+  }
+
+
+  Future<void> logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('auth_token');
+  }
+
+  Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('auth_token');
   }
 
 
