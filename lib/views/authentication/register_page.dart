@@ -14,6 +14,15 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
 
   final Color mainGreen = const Color(0xFF06923E);
 
+  final _formkey = GlobalKey<FormState>();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  String? _role;
+  bool _isLoading = false;
+  String? _error;
+
   @override
   void initState() {
     super.initState();
@@ -97,10 +106,10 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                         ),
                       ),
                       const SizedBox(height: 30),
-                      _buildInputField('Enter your username'),
-                      _buildInputField('Enter your email'),
-                      _buildInputField('Enter your password', isPassword: true),
-                      _buildInputField('Confirm your password', isPassword: true),
+                      _buildInputField('Enter your username', controller: _usernameController),
+                      _buildInputField('Enter your email', controller: _emailController),
+                      _buildInputField('Enter your password', isPassword: true, controller: _passwordController),
+                      _buildInputField('Confirm your password', isPassword: true, controller: _confirmPasswordController),
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -154,14 +163,20 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
     );
   }
 
-  Widget _buildInputField(String hint, {bool isPassword = false}) {
+  Widget _buildInputField(String hint, {bool isPassword = false, required TextEditingController controller}) {
   final theme = Theme.of(context);
   final isDark = theme.brightness == Brightness.dark;
 
   return Padding(
     padding: const EdgeInsets.only(bottom: 20),
     child: TextFormField(
+      controller: controller,
       obscureText: isPassword,
+      validator: (value) {
+        if (value == null || value.isEmpty) return 'Required';
+        if (hint.toLowerCase().contains('Email') && !value.contains("@")) return 'Invalid email';
+        return null;
+      },
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(
