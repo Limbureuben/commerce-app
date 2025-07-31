@@ -45,125 +45,122 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 40),
-          child: Column(
-            children: [
-              // Top toggle button row
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Row(
-                  children: [
-                    const Spacer(),
-                    ValueListenableBuilder<ThemeMode>(
-                      valueListenable: themeNotifier,
-                      builder: (_, currentTheme, __) {
-                        return IconButton(
-                          icon: Icon(
-                            currentTheme == ThemeMode.dark
-                                ? Icons.dark_mode
-                                : Icons.light_mode,
-                            color: Colors.green,
-                          ),
-                          onPressed: () {
-                            themeNotifier.value = currentTheme == ThemeMode.dark
-                                ? ThemeMode.light
-                                : ThemeMode.dark;
-                          },
-                        );
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    body: SafeArea(
+      child: Column(
+        children: [
+          // Top toggle button row
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Spacer(),
+                ValueListenableBuilder<ThemeMode>(
+                  valueListenable: themeNotifier,
+                  builder: (_, currentTheme, __) {
+                    return IconButton(
+                      icon: Icon(
+                        currentTheme == ThemeMode.dark
+                            ? Icons.dark_mode
+                            : Icons.light_mode,
+                        color: Colors.green,
+                      ),
+                      onPressed: () {
+                        themeNotifier.value = currentTheme == ThemeMode.dark
+                            ? ThemeMode.light
+                            : ThemeMode.dark;
                       },
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              ),
+              ],
+            ),
+          ),
 
-              const SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-              ScaleTransition(
-                scale: _imageAnimation,
-                child: Image.asset(
-                  'assets/images/illution.png',
-                  height: 300,
-                  fit: BoxFit.contain,
-                ),
-              ),
+          ScaleTransition(
+            scale: _imageAnimation,
+            child: Image.asset(
+              'assets/images/illution.png',
+              height: 250,
+              fit: BoxFit.contain,
+            ),
+          ),
 
-              const SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-              FadeTransition(
-                opacity: _textFade,
-                child: Column(
-                  children: const [
-                    Text(
-                      'Shop Smarter, Live Better',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF06923E),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        'Discover quality products at your fingertips, delivered to your door.',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 40),
-
-              FadeTransition(
-                opacity: _textFade,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () => Navigator.pushNamed(context, '/products'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF06923E),
-                          minimumSize: const Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: const Text('Login'),
-                      ),
-                      const SizedBox(height: 15),
-                      ElevatedButton(
-                        onPressed: () => Navigator.pushNamed(context, '/register'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: const Color(0xFF06923E),
-                          side: const BorderSide(color: Color(0xFF06923E)),
-                          minimumSize: const Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: const Text('Register'),
-                      ),
-                    ],
+          FadeTransition(
+            opacity: _textFade,
+            child: Column(
+              children: const [
+                Text(
+                  'Shop Smarter, Live Better',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF06923E),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Discover quality products at your fingertips, delivered to your door.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+
+          const Spacer(), // pushes the following buttons to the bottom
+
+          FadeTransition(
+            opacity: _textFade,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(context, '/products'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF06923E),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text('Login'),
+                  ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(context, '/register'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color(0xFF06923E),
+                      side: const BorderSide(color: Color(0xFF06923E)),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text('Register'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

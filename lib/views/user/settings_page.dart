@@ -20,10 +20,6 @@ class SettingsPage extends StatelessWidget {
             height: 200,
             decoration: const BoxDecoration(
               color: Color(0xFF06923E),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40),
-              ),
             ),
           ),
           SafeArea(
@@ -37,7 +33,7 @@ class SettingsPage extends StatelessWidget {
                     child: Text(
                       'Settings',
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -51,10 +47,6 @@ class SettingsPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24),
-                      ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -107,7 +99,7 @@ class SettingsPage extends StatelessWidget {
                               icon: const Icon(Icons.logout),
                               label: const Text('Logout'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF06923E),
+                                backgroundColor: const Color.fromARGB(255, 228, 87, 92),
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 14),
                                 shape: RoundedRectangleBorder(
@@ -149,7 +141,7 @@ class _SettingsItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
       child: ListTile(
-        leading: Icon(icon, color: Colors.blueAccent),
+        leading: Icon(icon, color: Color(0xFF06923E)),
         title: Text(title),
         subtitle: Text(subtitle),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),

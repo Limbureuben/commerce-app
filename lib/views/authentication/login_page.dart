@@ -219,3 +219,7 @@ Widget _buildSocialIcon(BuildContext context, IconData icon) {
 }
 
 }
+
+
+//  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64export 
+//  PATH=$JAVA_HOME/bin:$PATH
