@@ -139,7 +139,7 @@ Widget build(BuildContext context) {
                     child: Column(
                       children: [
                         ElevatedButton(
-                          onPressed: () => Navigator.pushNamed(context, '/products'),
+                          onPressed: () => Navigator.pushNamed(context, '/login'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF06923E),
                             minimumSize: const Size(double.infinity, 50),
