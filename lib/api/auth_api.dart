@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 
 class AuthApi {
-  static const String baseUrl = 'http://localhost:8000/api';
+  static const String baseUrl = 'http://172.16.67.2:8000/api';
 
   static Future<http.Response> registerUser(Map<String, dynamic> userData) async {
     final url = Uri.parse('$baseUrl/register');

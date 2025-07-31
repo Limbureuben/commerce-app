@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 import '../../services/auth_service.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -83,22 +84,45 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
       confirmPassword: _confirmPasswordController.text.trim(),
-      role: 'staff', // hardcoded role as per your request
     );
 
     setState(() {
       _isLoading = false;
-      _error = message;
     });
 
-    if (message == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registration successful')),
-      );
-      // Navigate to login page or dashboard after registration
+    if (message == "User Registered Successfully") {
+     return QuickAlert.show(
+      context: context,
+      type: QuickAlertType.success,
+      text: 'Registration successful',
+      confirmBtnText: 'okay',
+      showConfirmBtn: true,
+      confirmBtnColor:Colors.green,
+      borderRadius: 4.0,
+     ).then((value) {
       Navigator.pushReplacementNamed(context, '/login');
+     });
+
+    } else {
+      setState(() {
+        _error = message; // show error in form
+      });
+     return QuickAlert.show(
+      context: context,
+      type: QuickAlertType.error,
+      text: message,
+      confirmBtnText: 'okay',
+      showConfirmBtn: true,
+      confirmBtnColor: Colors.red,
+      borderRadius: 4.0
+     ).then((value) {
+      setState(() {
+        _error = null;
+      });
+     });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
