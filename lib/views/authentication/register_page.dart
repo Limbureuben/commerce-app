@@ -162,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> with TickerProviderStat
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        "Dear customer, Welcome",
+                        "Register",
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

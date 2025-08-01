@@ -107,7 +107,7 @@ Widget build(BuildContext context) {
                   child: Column(
                     children: const [
                       Text(
-                        'Shop Smarter, Live Better',
+                        'SAMIA FINANCE',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

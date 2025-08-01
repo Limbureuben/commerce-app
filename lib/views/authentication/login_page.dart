@@ -380,7 +380,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                       ),
                       const SizedBox(height: 20),
                       const Text(
-                        "Dear customer Welcome",
+                        "Login",
                         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 30),
